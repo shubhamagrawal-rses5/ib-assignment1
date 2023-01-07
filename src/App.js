@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState,useEffect } from 'react';
 
 function App() {
+  const storedValueAsNumber = Number(localStorage.getItem('count'));
+  const [count, setCount] = useState(
+    Number.isInteger(storedValueAsNumber) ? storedValueAsNumber : 0
+  );
+
+  useEffect(() => {
+    localStorage.setItem('count', String(count));
+  }, [count]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Count Value: {count}</h1>
+      <button onClick={() => setCount((c) => c - 1)}>Decrease</button>
+      <button onClick={() => setCount((c) => c + 1)}>Increase</button>
     </div>
   );
 }
