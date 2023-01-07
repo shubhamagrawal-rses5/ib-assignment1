@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
       <h1>Count Value: {count}</h1>
-      <button onClick={() => setCount((c) => c - 1)}>Decrease</button>
-      <button onClick={() => setCount((c) => c + 1)}>Increase</button>
+      <button className="bn11" onClick={() => setCount((c) => c - 1)}>Decrease</button>
+      <button className="bn11" onClick={() => setCount((c) => c + 1)}>Increase</button>
     </div>
   );
 }
